@@ -22,9 +22,9 @@ const Ratings = () => {
 
   return (
     <>
-      <nav className="flex flex-col justify-center items-start gap-5 pl-5">
+      <div className="flex flex-col justify-center items-start gap-5 pl-5 h-full mb-10 md:mb-0">
         <Label className="text-xl">Rate the Biasness:</Label>
-        <ul className="flex gap-2 items-center -space-x-1px h-10 text-base">
+        <ul className="flex gap-2 items-center flex-wrap justify-center -space-x-px h-10 text-base">
           {biasLevels?.map((item) => (
             <TooltipProvider delayDuration={100}>
               <Tooltip>
@@ -38,7 +38,7 @@ const Ratings = () => {
             </TooltipProvider>
           ))}
         </ul>
-      </nav>
+      </div>
     </>
   );
 };

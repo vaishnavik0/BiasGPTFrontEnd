@@ -7,7 +7,7 @@ type PageProps = {
 const Page = ({children}:PageProps) => {
   
   return (
-    <section className="flex justify-center items-center w-screen m-auto h-screen  bg-[#0C0F19] text-white flex-col gap-20 px-10 py-4">
+    <section className="flex justify-center items-center  m-auto   bg-[#0C0F19] text-white flex-col gap-20 px-10 py-4">
         {children}
     </section>
   )
