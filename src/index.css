@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+  background-color: #0C0F19;
+}
+
 ::-webkit-scrollbar {
   width: 4px;
 }
