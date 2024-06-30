@@ -25,9 +25,9 @@ const Chat = () => {
         </Button>
         <UserInput arrowDirection="down" setUserResponse={setapiResponse} />
       <div className="flex flex-col md:flex-row w-full h-full md:gap-10 justify-around items-center">
-        {apiResponse?.map((item:any)=>(
+        {apiResponse?.map((item:any,index:number)=>(
         <ModelWrapper
-        modelName="Model A"
+        modelName={index == 0? "Model A":"Model B"}
         response={item?.response}
       />
         ))}
