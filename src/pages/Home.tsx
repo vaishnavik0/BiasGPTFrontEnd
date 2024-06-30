@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import Header from "../wrappers/Home/Header";
-import UserInput from "../wrappers/Home/UserInput";
 import { Button } from "../components/ui/button";
 
 const Home = () => {

@@ -8,7 +8,7 @@ import {
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { addDoc, collection } from "firebase/firestore";
-import db from "../../firebase.js"
+import {db} from "../../firebase.ts";
 
 type pageProps ={
   modelName?: string,
