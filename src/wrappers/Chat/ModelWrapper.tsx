@@ -4,9 +4,11 @@ import { Card, CardDescription, CardHeader } from "../../components/ui/card";
 type pageProps = {
   modelName: string;
   response?: string;
+  model: string,
 };
 
-const ModelWrapper = ({ modelName, response }: pageProps) => {
+const ModelWrapper = ({ modelName, response, model }: pageProps) => {
+
   return (
     <div className="flex flex-col justify-center h-full items-start gap-5 py-4">
       <Card className="lg:w-[700px] lg:h-[480px] w-[100%] h-full p-4 bg-transparent text-white">
@@ -17,7 +19,7 @@ const ModelWrapper = ({ modelName, response }: pageProps) => {
           {response}
         </CardDescription>
       </Card>
-      <Ratings modelName={modelName} />
+      <Ratings modelName={model} />
     </div>
   );
 };

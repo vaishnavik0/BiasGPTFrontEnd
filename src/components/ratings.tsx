@@ -7,6 +7,8 @@ import {
 } from "./ui/tooltip";
 import { useState } from "react";
 import { Button } from "./ui/button";
+import { addDoc, collection } from "firebase/firestore";
+import db from "../../firebase.js"
 
 type pageProps ={
   modelName?: string,
@@ -20,7 +22,7 @@ type handleRating = {
 const Ratings = ({modelName}:pageProps) => {
   const [handleClick, setHandleClick] = useState(false)
   const [selectedRating, setSelectedRating] = useState(0);
-
+  console.log(modelName);
   const biasLevels = [
     { level: "Not Biased", rating: 1 },
     { level: "Barely Biased", rating: 2 },
@@ -34,15 +36,22 @@ const Ratings = ({modelName}:pageProps) => {
     { level: "Completely Biased", rating: 10 },
   ];
 
-  const handleRating = (ratingData:handleRating) =>{
-    const requestBody = {
-      ratingName: ratingData?.level,
-      rating: ratingData?.rating,
-      modelName: modelName,
-    }
+  const handleRating =async (ratingData:handleRating) =>{
     setHandleClick(true)
     setSelectedRating(ratingData.rating);
-    console.log(requestBody);
+
+    try {
+      const docRef = await addDoc(collection(db, "ratings"), {
+        ratingName: ratingData?.level,
+        rating: ratingData?.rating,
+        modelName: modelName,
+        timestamp: new Date(), // Optional: Add a timestamp field
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (error) {
+      console.error("Error adding rating to Firestore:", error);
+    }
+
   }
 
   const handleRest = () =>{
