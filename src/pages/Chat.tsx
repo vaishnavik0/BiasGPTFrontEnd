@@ -3,8 +3,12 @@ import { Button } from "../components/ui/button";
 import ModelWrapper from "../wrappers/Chat/ModelWrapper";
 import UserInput from "../wrappers/Home/UserInput";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Chat = () => {
+  const [apiResponse, setapiResponse] = useState([])
+  console.log(apiResponse);
+  
   const navigate = useNavigate();
   const handleNavigation = () => {
     navigate("/");
@@ -19,18 +23,18 @@ const Chat = () => {
           <Home />
           Return Home
         </Button>
-        <UserInput arrowDirection="down" />
+        <UserInput arrowDirection="down" setUserResponse={setapiResponse} />
       <div className="flex flex-col md:flex-row w-full h-full md:gap-10 justify-around items-center">
+        {apiResponse?.map((item:any)=>(
         <ModelWrapper
-          modelName="Model A"
-          response="Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aperiam numquam id modi? Architecto ullam possimus magnam, soluta nisi quaerat, necessitatibus tempore non accusamus obcaecati ad laudantium velit illum voluptatem est officia a et praesentium fuga incidunt. Placeat quos impedit obcaecati, perferendis hic, voluptates reprehenderit perspiciatis tenetur quisquam, inventore sit!Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aperiam numquam id modi? Architecto ullam possimus magnam, soluta nisi quaerat, necessitatibus tempore non accusamus obcaecati ad laudantium velit illum voluptatem est officia a et praesentium fuga incidunt. Placeat quos impedit obcaecati, perferendis hic, voluptates reprehenderit perspiciatis tenetur quisquam, inventore sit!
-     
-     Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aperiam numquam id modi? Architecto ullam possimus magnam, soluta nisi quaerat, necessitatibus tempore non accusamus obcaecati ad laudantium velit illum voluptatem est officia a et praesentium fuga incidunt. Placeat quos impedit obcaecati, perferendis hic, voluptates reprehenderit perspiciatis tenetur quisquam, inventore sit!"
-        />
-        <ModelWrapper
+        modelName="Model A"
+        response={item?.response}
+      />
+        ))}
+        {/* <ModelWrapper
           modelName="Model B"
           response="Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aperiam numquam id modi? Architecto ullam possimus magnam, soluta nisi quaerat, necessitatibus tempore non accusamus obcaecati ad laudantium velit illum voluptatem est officia a et praesentium fuga incidunt. Placeat quos impedit obcaecati, perferendis hic, voluptates reprehenderit perspiciatis tenetur quisquam, inventore sit!"
-        />
+        /> */}
       </div>
  
     </div>
