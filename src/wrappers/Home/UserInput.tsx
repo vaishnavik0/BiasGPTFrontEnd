@@ -46,6 +46,7 @@ const UserInput = ({
           className="bg-[#0C0F19] w-[80vw] text-xl p-3"
         ></Textarea>
         <Button
+          type="submit"
           className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-transparent text-2xl text-white transition-all hover:bg-transparent hover:scale-100"
         >
           {arrowDirection == "up" ? (
