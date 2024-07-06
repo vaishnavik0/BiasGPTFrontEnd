@@ -2,12 +2,14 @@ import { RouterProvider, createBrowserRouter, useLocation, Outlet } from "react-
 import Home from "./pages/Home.tsx";
 import Chat from "./pages/Chat.tsx";
 import Page from "./wrappers/Page";
+import { Toaster } from "./components/ui/toaster.tsx";
 
 const Layout = () => {
   const location = useLocation();
   return (
     <Page page={location.pathname === "/" ? "home" : "chat"}>
       <Outlet />
+      <Toaster />
     </Page>
   );
 };

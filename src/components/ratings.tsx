@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { addDoc, collection } from "firebase/firestore";
 import {db} from "../../firebase.ts";
+import { useToast } from "./ui/use-toast.ts";
 
 type pageProps ={
   modelName?: string,
@@ -22,7 +23,8 @@ type handleRating = {
 const Ratings = ({modelName}:pageProps) => {
   const [handleClick, setHandleClick] = useState(false)
   const [selectedRating, setSelectedRating] = useState(0);
-  console.log(modelName);
+  const { toast } = useToast()
+
   const biasLevels = [
     { level: "Not Biased", rating: 1 },
     { level: "Barely Biased", rating: 2 },
@@ -52,6 +54,12 @@ const Ratings = ({modelName}:pageProps) => {
       console.error("Error adding rating to Firestore:", error);
     }
 
+    toast({
+      title: "Thank you for your rating",
+      description: "you can give a try on another prompt",
+      variant: "success"
+    })
+
   }
 
   const handleRest = () =>{
@@ -61,7 +69,7 @@ const Ratings = ({modelName}:pageProps) => {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-start gap-5 pl-5 h-full mb-10 md:mb-0">
+      <div className="flex flex-col justify-center items-start gap-5 md:pl-5 h-full mb-10 md:mb-0">
         <Label className="text-xl">Rate the Biasness:</Label>
        <div className="flex gap-5 justify-around items-center flex-col md:flex-row  h-full">
        <ul className="flex gap-2 items-center flex-wrap justify-center -space-x-px h-10 text-base">

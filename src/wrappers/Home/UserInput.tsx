@@ -3,6 +3,7 @@ import { Textarea } from "../../components/ui/textarea";
 import { CircleArrowDown, CircleArrowUp } from "lucide-react";
 import { useState } from "react";
 import axios from "axios";
+import { useToast } from "../../components/ui/use-toast";
 
 type PageProps = {
   arrowDirection: string;
@@ -16,24 +17,37 @@ const UserInput = ({
   setLoader,
 }: PageProps) => {
   const [userPrompt, setUserPrompt] = useState("");
+  const { toast } = useToast()
 
   const handleSendRequest = () => {
-    setLoader(true); // Set loader to true before making the API call
+    if(userPrompt === ""){
+      toast({
+        title: "Please enter a valid input",
+        variant: "destructive"
+      })
+    }else {
+      setLoader(true); // Set loader to true before making the API call
 
-    axios
-      .post("https://biasgptbackend.vercel.app/chat", {
-        modelName: "Model A",
-        userPrompt: userPrompt,
-      })
-      .then((response) => {
-        setUserResponse(response.data.response); // Update user response state
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      })
-      .finally(() => {
-        setLoader(false); // Set loader to false after API call completes (success or failure)
-      });
+      axios
+        .post("https://biasgptbackend.vercel.app/chat", {
+          modelName: "Model A",
+          userPrompt: userPrompt,
+        })
+        .then((response) => {
+          setUserResponse({
+            modelResponse: response.data.response,
+            userPrompt: userPrompt
+          }); // Update user response state
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        })
+        .finally(() => {
+          setLoader(false);
+          setUserPrompt("") // Set loader to false after API call completes (success or failure)
+        });
+    }
+  
   };
 
   return (
@@ -44,6 +58,7 @@ const UserInput = ({
           onChange={(e) => setUserPrompt(e.target.value)}
           placeholder="Enter your prompt here"
           className="bg-[#0C0F19] w-[80vw] text-xl p-3"
+          required
         ></Textarea>
         <Button
           type="submit"

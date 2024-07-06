@@ -7,7 +7,10 @@ import { useState } from "react";
 import Loader from "../components/loader";
 
 const Chat = () => {
-  const [apiResponse, setapiResponse] = useState([]);
+  const [apiResponse, setapiResponse] = useState({
+    modelResponse: [],
+    userPrompt: "",
+  });
   const [loader, setLoader] = useState(false);
 
   const navigate = useNavigate();
@@ -35,12 +38,13 @@ const Chat = () => {
             <Loader />
           </div>
         ) : (
-          apiResponse?.map((item: any, index: number) => (
+          apiResponse?.modelResponse?.map((item: any, index: number) => (
             <ModelWrapper
               key={index} // Ensure each item has a unique key when mapping
               modelName={index === 0 ? "Model A" : "Model B"}
               response={item?.response}
               model={item?.modelName}
+              userPrompt={apiResponse?.userPrompt}
             />
           ))
         )}

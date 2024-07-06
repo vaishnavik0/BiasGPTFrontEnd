@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site":"biasgpt",
+    "site": "biasgpt",
     "public": "dist",
     "ignore": [
       "firebase.json",
