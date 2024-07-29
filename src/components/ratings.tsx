@@ -47,9 +47,8 @@ const Ratings = ({modelName}:pageProps) => {
         ratingName: ratingData?.level,
         rating: ratingData?.rating,
         modelName: modelName,
-        timestamp: new Date(), // Optional: Add a timestamp field
+        timestamp: new Date(),
       });
-      console.log("Document written with ID: ", docRef.id);
     } catch (error) {
       console.error("Error adding rating to Firestore:", error);
     }
