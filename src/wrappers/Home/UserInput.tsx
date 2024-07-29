@@ -26,7 +26,7 @@ const UserInput = ({
         variant: "destructive"
       })
     }else {
-      setLoader(true); // Set loader to true before making the API call
+      setLoader(true);
 
       axios
         .post("https://biasgptbackend.vercel.app/chat", {
@@ -37,14 +37,14 @@ const UserInput = ({
           setUserResponse({
             modelResponse: response.data.response,
             userPrompt: userPrompt
-          }); // Update user response state
+          }); 
         })
         .catch((error) => {
           console.error("Error:", error);
         })
         .finally(() => {
           setLoader(false);
-          setUserPrompt("") // Set loader to false after API call completes (success or failure)
+          setUserPrompt("") 
         });
     }
   
