@@ -40,7 +40,7 @@ const Chat = () => {
         ) : (
           apiResponse?.modelResponse?.map((item: any, index: number) => (
             <ModelWrapper
-              key={index} // Ensure each item has a unique key when mapping
+              key={index}
               modelName={index === 0 ? "Model A" : "Model B"}
               response={item?.response}
               model={item?.modelName}
