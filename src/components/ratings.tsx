@@ -80,7 +80,7 @@ const Ratings = ({ modelName }: pageProps) => {
                 <Tooltip>
                   <TooltipTrigger>
                     <li
-                      className={`flex items-center justify-center px-4 h-10 leading-tight rounded-lg border border-[#0C0F19] hover:bg-gray-100 hover:text-gray-700 ${
+                      className={`flex items-center justify-center px-4 h-10 leading-tight rounded-lg border-2 border-[#0C0F19] hover:bg-gray-100 hover:text-gray-700 ${
                         selectedRating
                           ? selectedRating === item.rating
                             ? "bg-white text-black"
@@ -98,7 +98,7 @@ const Ratings = ({ modelName }: pageProps) => {
             ))}
           </ul>
           <Button
-            className="bg-transparent border-2 border-white mt-20 md:mt-0"
+            className="bg-white text-black border-2 rounded-md border-[#0C0F19] hover:text-white"
             onClick={() => handleRest()}
           >
             Rate Again

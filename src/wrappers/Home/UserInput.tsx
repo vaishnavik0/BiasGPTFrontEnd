@@ -29,7 +29,7 @@ const UserInput = ({
       setLoader(true); // Set loader to true before making the API call
 
       axios
-        .post("https://biasgptbackend.vercel.app/chat", {
+        .post("https://bias-gpt-backend.vercel.app/chat", {
           modelName: "Model A",
           userPrompt: userPrompt,
         })
@@ -43,8 +43,7 @@ const UserInput = ({
           console.error("Error:", error);
         })
         .finally(() => {
-          setLoader(false);
-          setUserPrompt(""); // Set loader to false after API call completes (success or failure)
+          setLoader(false); // Set loader to false after API call completes (success or failure)
         });
     }
   };
@@ -56,12 +55,12 @@ const UserInput = ({
           value={userPrompt}
           onChange={(e) => setUserPrompt(e.target.value)}
           placeholder="Enter your prompt here"
-          className="bg-white border-2 border-[#0C0F19] text-[#0C0F19] w-[80vw] text-xl p-3"
+          className="bg-white border-2 border-[#0C0F19] relative text-[#0C0F19] w-[80vw] text-xl p-3"
           required
         ></Textarea>
         <Button
           type="submit"
-          className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-transparent text-2xl text-white transition-all hover:bg-transparent hover:scale-100"
+          className="absolute top-1/2 right-20 transform -translate-y-1/2 bg-transparent text-2xl text-white transition-all hover:bg-transparent hover:scale-100"
         >
           {arrowDirection == "up" ? (
             <CircleArrowUp
