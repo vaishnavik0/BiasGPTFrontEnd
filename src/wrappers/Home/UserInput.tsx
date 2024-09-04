@@ -17,15 +17,15 @@ const UserInput = ({
   setLoader,
 }: PageProps) => {
   const [userPrompt, setUserPrompt] = useState("");
-  const { toast } = useToast()
+  const { toast } = useToast();
 
   const handleSendRequest = () => {
-    if(userPrompt === ""){
+    if (userPrompt === "") {
       toast({
         title: "Please enter a valid input",
-        variant: "destructive"
-      })
-    }else {
+        variant: "destructive",
+      });
+    } else {
       setLoader(true); // Set loader to true before making the API call
 
       axios
@@ -36,7 +36,7 @@ const UserInput = ({
         .then((response) => {
           setUserResponse({
             modelResponse: response.data.response,
-            userPrompt: userPrompt
+            userPrompt: userPrompt,
           }); // Update user response state
         })
         .catch((error) => {
@@ -44,10 +44,9 @@ const UserInput = ({
         })
         .finally(() => {
           setLoader(false);
-          setUserPrompt("") // Set loader to false after API call completes (success or failure)
+          setUserPrompt(""); // Set loader to false after API call completes (success or failure)
         });
     }
-  
   };
 
   return (
@@ -57,7 +56,7 @@ const UserInput = ({
           value={userPrompt}
           onChange={(e) => setUserPrompt(e.target.value)}
           placeholder="Enter your prompt here"
-          className="bg-[#0C0F19] w-[80vw] text-xl p-3"
+          className="bg-white border-2 border-[#0C0F19] text-[#0C0F19] w-[80vw] text-xl p-3"
           required
         ></Textarea>
         <Button
@@ -69,12 +68,14 @@ const UserInput = ({
               size={24}
               strokeWidth={2}
               onClick={handleSendRequest}
+              color="#0C0F19"
             />
           ) : (
             <CircleArrowDown
               size={24}
               strokeWidth={2}
               onClick={handleSendRequest}
+              color="#0C0F19"
             />
           )}
         </Button>

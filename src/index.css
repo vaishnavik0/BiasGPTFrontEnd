@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-  background-color: #0C0F19;
+body {
+  background-color: #fff;
+  color: #0c0f19;
 }
 
 ::-webkit-scrollbar {
@@ -17,7 +18,7 @@ body{
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #f1f1f1;
+  background: #0c0f19;
 }
 
 /* Handle on hover */

@@ -8,10 +8,17 @@ const Home = () => {
   const handleNavigation = () => {
     navigate("/chat");
   };
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
   return (
     <>
       <Header />
-      <Button className="bg-white text-black hover:bg-transparent hover:border-2 hover:border-white hover:text-white" onClick={handleNavigation}>
+      <Button
+        className="bg-white text-black border-2 rounded-md border-[#0C0F19] hover:text-white"
+        onClick={handleNavigation}
+      >
         Try Biased GPT
       </Button>
     </>

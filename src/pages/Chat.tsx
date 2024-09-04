@@ -21,7 +21,7 @@ const Chat = () => {
   return (
     <div className="flex flex-col justify-between items-center gap-6 h-full p-4">
       <Button
-        className="bg-white text-black flex items-center gap-3 hover:text-white hover:border-2 hover:border-white"
+        className="bg-white text-black border-2 rounded-md border-[#0C0F19] hover:text-white"
         onClick={handleNavigation}
       >
         <Home />
