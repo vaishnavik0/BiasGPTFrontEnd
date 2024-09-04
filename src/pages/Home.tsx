@@ -8,10 +8,7 @@ const Home = () => {
   const handleNavigation = () => {
     navigate("/chat");
   };
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
   return (
     <>
       <Header />
